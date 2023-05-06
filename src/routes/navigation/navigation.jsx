@@ -2,15 +2,14 @@ import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { ReactComponent  as CrwnLogo} from '../../../assets/crown.svg';
+import { ReactComponent  as CrwnLogo} from '../../assets/crown.svg';
 
-import CartIcon from "../../cart-icon/cart-icon.component";
-import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
+import CartIcon from '../../components/cart-icon/cart-icon.component';
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
 
-import { selectCurrentUser } from "../../../store/user/user.selector";
-import { selectIsCarOpen } from "../../../store/cart/cart.selector";
-
-import {  signOutStart } from '../../../store/user/user.action';
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
+import { selectCurrentUser } from '../../store/user/user.selector';
+import { signOutStart } from '../../store/user/user.action';
 
 
 import './navigation.styles.scss';
@@ -18,7 +17,7 @@ import './navigation.styles.scss';
 const Navigation = () => {
     const dispatch = useDispatch();
     const currentUser = useSelector(selectCurrentUser );
-    const isCartOpen = useSelector(selectIsCarOpen);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     const signOutUser = () => dispatch(signOutStart());
 
