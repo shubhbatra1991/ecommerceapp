@@ -23,7 +23,9 @@ import {
   createAuthUserWithEmailAndPassword,
   signOutUser,
   AdditionalInformation,
+  UserData,
 } from '../../utils/firebase/firebase.utils';
+
 
 export function* getSnapshotFromUserAuth(
   userAuth: User,
@@ -37,7 +39,7 @@ export function* getSnapshotFromUserAuth(
     );
     if (userSnapshot) {
       yield* put(
-        signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
+        signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() as UserData })
       );
     }
   } catch (error) {
